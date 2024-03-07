@@ -4,7 +4,7 @@
 
 - master-project-report.pdf: report about what I learned and what is good to know about information bottleneck. 
 
-- functions.py: File containing different functions. Here is an exhaustive list: 
+- functions_IB.py: File containing different general functions and specific functions for the IB algorithm. Here is an exhaustive list: 
 
     - kl_divergence: Compute the D_KL(p,q) between two distribution functions p and q.
     
@@ -22,7 +22,7 @@
     
     - IB_curve: Compute an IB curve from a joint distribution p(x,y) and some values of beta. 
 
-- functions_DIB.py: File containing different functions specific to the DIB algorithm for geometric clustering. Here is an exhaustive list : 
+- functions_geom_DIB.py: File containing different functions specific to the DIB algorithm for geometric clustering. Here is an exhaustive list : 
     
     - generate_gaussian_points: Generate Gaussian points from multiple chosen Gaussian distributions.
 
@@ -36,9 +36,11 @@
 
     - plot_clusters: Plot the data points and color them based on the cluster they are associated with (q(t|x)).
 
+    - DIB_curve: Plot the DIB curve from a joint distribution p(x,y) and some values of beta. 
+
 - test-general-IB.ipynb: Notebook where we made the tests for functions in functions.py. 
 
-- test-geom-DIB.ipynb: Notebook where we made the tests for functions in functions_DIB.py. 
+- test-geom-DIB.ipynb: Notebook where we made the tests for functions in functions_geom_DIB.py. 
 
 
 

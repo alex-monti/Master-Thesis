@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from functions import kl_divergence, entropy, mutual_information
+from functions_IB import kl_divergence, entropy, mutual_information
 
 def generate_gaussian_points(num_points_per_distribution, mean_list, cov_list):
     """
@@ -220,4 +220,41 @@ def plot_clusters(data_points, q_t_given_x):
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.title('Data Points Colored by Clusters')
+    plt.show()
+
+def DIB_curve(p_xy, beta_values, max_iter=100):
+    """
+    Plot the DIB curve.
+
+    Parameters:
+    - p_xy (numpy.ndarray): Joint probability distribution of random variables X and Y.
+    - beta_values (list): List of beta values to be used in the iterative algorithm.
+    - max_iter (int, default=100). Maximum number of iterations for the iterative algorithm.
+
+    Returns:
+    - The DIB curve plot.
+    """
+    # Initialize lists to store I(T;Y) and H(T) for each beta
+    mutual_information_values = []
+    entropy_values = []
+
+    for beta in beta_values:
+        # Run the iterative algorithm
+        q_t_given_x, q_t, q_y_given_t = geom_DIB(p_xy, max_iter=max_iter, beta=beta)
+
+        # Calculate the mutual information I(T;Y)
+        I_ty = mutual_information(q_t.reshape(-1, 1) * q_y_given_t)
+
+        # Calculate the entropy H(T)
+        H_t = entropy(q_t)
+
+        # Append the mutual information and entropy to the lists
+        mutual_information_values.append(I_ty)
+        entropy_values.append(H_t)
+
+    # Plot the DIB curve
+    plt.plot(entropy_values, mutual_information_values, marker='o')
+    plt.xlabel('H(T)')
+    plt.ylabel('I(T;Y)')
+    plt.title('DIB Curve')
     plt.show()
