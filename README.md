@@ -1,0 +1,44 @@
+# Description of the files 
+
+- images (folder): contains the different images that I saved for my report.
+
+- master-project-report.pdf: report about what I learned and what is good to know about information bottleneck. 
+
+- functions.py: File containing different functions. Here is an exhaustive list: 
+
+    - kl_divergence: Compute the D_KL(p,q) between two distribution functions p and q.
+    
+    - entropy: Compute H(p) of a distribution function p.
+
+    - mutual_information: Compute I(X,Y) from their joint distribution p(x,y).
+
+    - generate_joint_distribution: Generate a valid joint distribution p(x,y) of chosen size.
+
+    - information_bottleneck: Compute q(t|x), q(t) and q(y|t) from a joint distribution p(x,y) by using the information bottleneck method (soft clustering) for a fixed number of iterations. 
+
+    - information_bottleneck_convergence: Compute q(t|x), q(t) and q(y|t) from a joint distribution p(x,y) by using the information bottleneck method (soft clustering) without fixing the number of iterations but by using a metric criterion for convergence. 
+
+    - compute_mutual_information_over_beta: Compute I(X;T) and I(T;Y) for different chosen values of beta from the joint distribution p(x,y). We can choose which algorithm we want to use in this function. 
+    
+    - IB_curve: Compute an IB curve from a joint distribution p(x,y) and some values of beta. 
+
+- functions_DIB.py: File containing different functions specific to the DIB algorithm for geometric clustering. Here is an exhaustive list : 
+    
+    - generate_gaussian_points: Generate Gaussian points from multiple chosen Gaussian distributions.
+
+    - add_index_to_data: Create a dataframe of datapoints where each row is a data location and the first column is the data index. 
+
+    - px_i: Compute p(x|i) following the rules for geometric clustering, cf. [3].
+
+    - calculate_probabilities: Compute the probabilities p(x|i) and p(i, x) for each data point in the given DataFrame.
+
+    - geom_DIB: Compute q(t|x), q(t) and q(y|t) from a joint distribution p(x,y) by using the deterministic information bottleneck method (hard clustering) for a fixed number of iterations. 
+
+    - plot_clusters: Plot the data points and color them based on the cluster they are associated with (q(t|x)).
+
+- test-general-IB.ipynb: Notebook where we made the tests for functions in functions.py. 
+
+- test-geom-DIB.ipynb: Notebook where we made the tests for functions in functions_DIB.py. 
+
+
+

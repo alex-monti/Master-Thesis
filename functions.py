@@ -64,8 +64,8 @@ def mutual_information(p_xy):
     p_y = np.sum(p_xy, axis=0)
     
     # Compute entropy
-    entropy_x = -np.sum(p_x * np.log(p_x))
-    entropy_y = -np.sum(p_y * np.log(p_y))
+    entropy_x = -np.sum(p_x * np.log(p_x + 1e-10))
+    entropy_y = -np.sum(p_y * np.log(p_y + 1e-10))
     joint_entropy = -np.sum(p_xy * np.log(p_xy + 1e-10))  # Adding a small value to avoid log(0)
     
     # Compute mutual information
@@ -142,41 +142,8 @@ def information_bottleneck(p_xy, beta, max_iter=100):
         q_y_given_t = q_y_given_t.T
     return q_t_given_x, q_t, q_y_given_t
 
-def compute_mutual_information_over_beta(p_xy, beta_values, max_iter, algorithm):
-    """
-    Compute mutual information between variables X and T, and between variables T and Y
-    for different values of beta.
-
-    Parameters:
-    - p_xy: numpy array, joint probability distribution of variables X and Y
-    - beta_values: list, values of beta for which to compute mutual information
-    - max_iter: int, maximum number of iterations for the information bottleneck algorithm
-    - algorithm: function, the information bottleneck algorithm to use
-
-    Returns:
-    - mutual_info_x_t_list: list, mutual information between X and T for each beta value
-    - mutual_info_t_y_list: list, mutual information between T and Y for each beta value
-    """
-    mutual_info_x_t_list = []
-    mutual_info_t_y_list = []
-
-    p_x = np.sum(p_xy, axis=1)
-    
-    for beta in beta_values:
-        q_t_given_x, q_t, q_y_given_t = algorithm(p_xy, beta=beta, max_iter=max_iter)
-        
-        # Compute mutual information
-        q_xt = p_x[:, np.newaxis] * q_t_given_x
-        q_ty = q_t[:, np.newaxis] * q_y_given_t
-        mutual_info_x_t = mutual_information(q_xt)
-        mutual_info_t_y = mutual_information(q_ty)
-        
-        mutual_info_x_t_list.append(mutual_info_x_t)
-        mutual_info_t_y_list.append(mutual_info_t_y)
-    
-    return mutual_info_x_t_list, mutual_info_t_y_list
-
 def information_bottleneck_convergence(p_xy, beta, max_iter=10000, threshold=1e-8):
+
     """
     Compute the information bottleneck algorithm with convergence based on the diference between 
     consecutive values of q(t).
@@ -235,6 +202,40 @@ def information_bottleneck_convergence(p_xy, beta, max_iter=10000, threshold=1e-
         q_y_given_t = np.dot(p_xy.T, q_t_given_x) / q_t
         q_y_given_t = q_y_given_t.T
     return q_t_given_x, q_t, q_y_given_t
+
+def compute_mutual_information_over_beta(p_xy, beta_values, max_iter, algorithm):
+    """
+    Compute mutual information between variables X and T, and between variables T and Y
+    for different values of beta.
+
+    Parameters:
+    - p_xy: numpy array, joint probability distribution of variables X and Y
+    - beta_values: list, values of beta for which to compute mutual information
+    - max_iter: int, maximum number of iterations for the information bottleneck algorithm
+    - algorithm: function, the information bottleneck algorithm to use
+
+    Returns:
+    - mutual_info_x_t_list: list, mutual information between X and T for each beta value
+    - mutual_info_t_y_list: list, mutual information between T and Y for each beta value
+    """
+    mutual_info_x_t_list = []
+    mutual_info_t_y_list = []
+
+    p_x = np.sum(p_xy, axis=1)
+    
+    for beta in beta_values:
+        q_t_given_x, q_t, q_y_given_t = algorithm(p_xy, beta=beta, max_iter=max_iter)
+        
+        # Compute mutual information
+        q_xt = p_x[:, np.newaxis] * q_t_given_x
+        q_ty = q_t[:, np.newaxis] * q_y_given_t
+        mutual_info_x_t = mutual_information(q_xt)
+        mutual_info_t_y = mutual_information(q_ty)
+        
+        mutual_info_x_t_list.append(mutual_info_x_t)
+        mutual_info_t_y_list.append(mutual_info_t_y)
+    
+    return mutual_info_x_t_list, mutual_info_t_y_list
 
 def IB_curve(p_xy, beta_values, max_iter, algorithm):
     """
