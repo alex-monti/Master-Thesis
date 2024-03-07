@@ -87,7 +87,7 @@ def calculate_probabilities(df, s=1):
 
 def geom_DIB(p_xy, max_iter=100, beta=0.5):
     """
-    Performs the geometric information bottleneck algorithm for clustering.
+    Performs the geometric deterministic information bottleneck algorithm for clustering.
 
     Parameters:
     - p_xy (numpy.ndarray): The joint probability distribution of data points and clusters.
@@ -258,3 +258,29 @@ def DIB_curve(p_xy, beta_values, max_iter=100):
     plt.ylabel('I(T;Y)')
     plt.title('DIB Curve')
     plt.show()
+
+def compute_entropy_over_beta(p_xy, beta_values, max_iter, algorithm):
+    """
+    Compute the entropy H(T) over different beta values.
+
+    Parameters:
+    - p_xy (numpy.ndarray): Joint probability distribution of random variables X and Y.
+    - beta_values (list): List of beta values to be used in the iterative algorithm.
+    - max_iter (int, default=100). Maximum number of iterations for the iterative algorithm.
+
+    Returns:
+    - entropy_values (list): List of entropy values for each beta value.
+    """
+    entropy_values = []
+
+    for beta in beta_values:
+        # Run the iterative algorithm
+        q_t_given_x, q_t, q_y_given_t = algorithm(p_xy, max_iter=max_iter, beta=beta)
+
+        # Calculate the entropy H(T)
+        H_t = entropy(q_t)
+
+        # Append the entropy to the list
+        entropy_values.append(H_t)
+
+    return entropy_values
