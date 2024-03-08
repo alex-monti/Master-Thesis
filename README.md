@@ -4,7 +4,7 @@
 
 - master-project-report.pdf: report about what I learned and what is good to know about information bottleneck. 
 
-- functions_IB.py: File containing different general functions and specific functions for the IB algorithm. Here is an exhaustive list: 
+- functions_general_IB.py: File containing different general functions and specific functions for the IB algorithm. Here is an exhaustive list: 
 
     - kl_divergence: Compute the D_KL(p,q) between two distribution functions p and q.
     
@@ -41,6 +41,8 @@
 - test-general-IB.ipynb: Notebook where we made the tests for functions in functions.py. 
 
 - test-geom-DIB.ipynb: Notebook where we made the tests for functions in functions_geom_DIB.py. 
+
+- test-general-DIB.ipynb: Notebook where we made the tests for general DIB. 
 
 
 
