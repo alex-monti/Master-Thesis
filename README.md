@@ -38,6 +38,8 @@
 
     - DIB_curve: Plot the DIB curve from a joint distribution p(x,y) and some values of beta. 
 
+    - compute_entropy_over_beta: Compute H(T) for different chosen values of beta from the joint distribution p(x,y). We can choose which algorithm we want to use in this function. 
+
 - test-general-IB.ipynb: Notebook where we made the tests for functions in functions.py. 
 
 - test-geom-DIB.ipynb: Notebook where we made the tests for functions in functions_geom_DIB.py. 
