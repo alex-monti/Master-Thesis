@@ -140,6 +140,9 @@ def information_bottleneck(p_xy, beta, max_iter=100):
         q_t = np.dot(p_x, q_t_given_x) # Array of dimension Y 
         q_y_given_t = np.dot(p_xy.T, q_t_given_x) / q_t
         q_y_given_t = q_y_given_t.T
+        
+        # print the iteration number
+        print(f'Iteration {_}', "out of", max_iter)
     return q_t_given_x, q_t, q_y_given_t
 
 def information_bottleneck_convergence(p_xy, beta, max_iter=10000, threshold=1e-8):
@@ -185,6 +188,9 @@ def information_bottleneck_convergence(p_xy, beta, max_iter=10000, threshold=1e-
     
     while (np.linalg.norm(q_t_old - q_t_new) > threshold and iteration < max_iter):
         iteration += 1
+        # print iteration number 
+        print(f'Iteration {iteration}')
+
         # Compute KL divergence and update q(t|x)
         for i in range(num_data_points):
             for j in range(num_clusters):
@@ -223,7 +229,12 @@ def compute_mutual_information_over_beta(p_xy, beta_values, max_iter, algorithm)
 
     p_x = np.sum(p_xy, axis=1)
     
+    beta_n = 0
     for beta in beta_values:
+        #print the beta number
+        beta_n += 1
+        print(f'Computing mutual information for beta {beta_n} out of {len(beta_values)}')
+        
         q_t_given_x, q_t, q_y_given_t = algorithm(p_xy, beta=beta, max_iter=max_iter)
         
         # Compute mutual information

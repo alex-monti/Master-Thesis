@@ -144,6 +144,10 @@ def geom_DIB(p_xy, max_iter=100, beta=0.5):
         
         # Normalize q(t)
         q_t /= np.sum(q_t)
+        
+        # print at which iteration we are 
+        print("Iteration:", _, "out of", max_iter)
+        
 
 ########################################################################################################
 
@@ -238,7 +242,12 @@ def DIB_curve(p_xy, beta_values, max_iter=100):
     mutual_information_values = []
     entropy_values = []
 
+    beta_n = 0
     for beta in beta_values:
+        # Print iteration number
+        beta_n += 1
+        print("Beta:", beta_n, "out of", len(beta_values))
+        
         # Run the iterative algorithm
         q_t_given_x, q_t, q_y_given_t = geom_DIB(p_xy, max_iter=max_iter, beta=beta)
 
