@@ -145,11 +145,11 @@ def information_bottleneck(p_xy, beta, max_iter=100):
         print(f'Iteration {_}', "out of", max_iter)
     return q_t_given_x, q_t, q_y_given_t
 
-def information_bottleneck_convergence(p_xy, beta, max_iter=10000, threshold=1e-8):
+def information_bottleneck_convergence(p_xy, beta, max_iter=10000, threshold=1e-6):
 
     """
     Compute the information bottleneck algorithm with convergence based on the diference between 
-    consecutive values of q(t).
+    consecutive values of the objective function.
 
     Parameters:
     - p_xy (numpy.ndarray): The joint distribution of X and Y. Each row is an X, each column is a Y.
@@ -167,7 +167,6 @@ def information_bottleneck_convergence(p_xy, beta, max_iter=10000, threshold=1e-
     """
     # Each row is an X, each column is a Y
     num_data_points = p_xy.shape[0]
-    #num_clusters = p_xy.shape[1]
     num_clusters = p_xy.shape[0]
 
     #Initialize p(y|x) and p(x)
@@ -182,11 +181,16 @@ def information_bottleneck_convergence(p_xy, beta, max_iter=10000, threshold=1e-
     q_y_given_t = np.dot(p_xy.T, q_t_given_x) / q_t
     q_y_given_t = q_y_given_t.T # Each row is a T, each column is a Y
 
-    q_t_old = np.zeros(num_clusters)
-    q_t_new = q_t
+    # Initalize the objective functions for old and new state
+    objective_old = 0
+    I_XT = mutual_information(p_x.reshape(-1, 1) * q_t_given_x)
+    I_TY = mutual_information(q_t.reshape(-1, 1) * q_y_given_t)
+    objective_new = I_XT - beta * I_TY
     iteration = 0
     
-    while (np.linalg.norm(q_t_old - q_t_new) > threshold and iteration < max_iter):
+    # Convergence based on the difference between consecutive values of the objective function
+    while (abs(objective_new - objective_old) > threshold and iteration < max_iter):
+
         iteration += 1
         # print iteration number 
         print(f'Iteration {iteration}')
@@ -201,12 +205,15 @@ def information_bottleneck_convergence(p_xy, beta, max_iter=10000, threshold=1e-
         q_t_given_x += epsilon
         q_t_given_x /= np.sum(q_t_given_x, axis=1, keepdims=True)
 
-        # Update q(t) and q(y|t)
-        q_t_old = q_t
+        # Update q(t), q(y|t) and the objective functions 
+        objective_old = objective_new
         q_t = np.dot(p_x, q_t_given_x) # Array of dimension Y 
-        q_t_new = q_t
+        I_XT = mutual_information(p_x.reshape(-1, 1) * q_t_given_x)
+        I_TY = mutual_information(q_t.reshape(-1, 1) * q_y_given_t)
+        objective_new = I_XT - beta * I_TY
         q_y_given_t = np.dot(p_xy.T, q_t_given_x) / q_t
         q_y_given_t = q_y_given_t.T
+
     return q_t_given_x, q_t, q_y_given_t
 
 def compute_mutual_information_over_beta(p_xy, beta_values, max_iter, algorithm):

@@ -2,6 +2,10 @@
 
 - images (folder): contains the different images that I saved for my report.
 
+- data (folder): contains different datasets (telephone.dat, swissmetro.dat). 
+
+- Telephone (folder): contains python code for different implementations of NLM and CLNM on telephone data. 
+
 - master-project-report.pdf: report about what I learned and what is good to know about information bottleneck. 
 
 - functions_general_IB.py: File containing different general functions and specific functions for the IB algorithm. Here is an exhaustive list: 
@@ -40,11 +44,25 @@
 
     - compute_entropy_over_beta: Compute H(T) for different chosen values of beta from the joint distribution p(x,y). We can choose which algorithm we want to use in this function. 
 
+- functions_NLM.py: File containing different functions to compute a NLM. Here is an exhaustive list: 
+    - estimate_nested_logit: Estimate parameters for a nested logit model using maximum likelihood estimation.
+
+    - find_clusters: Finds clusters in a binary array based on where the 1 in each row.
+
 - test-general-IB.ipynb: Notebook where we made the tests for functions in functions.py. 
 
 - test-geom-DIB.ipynb: Notebook where we made the tests for functions in functions_geom_DIB.py. 
 
 - test-general-DIB.ipynb: Notebook where we made the tests for general DIB. 
 
+- NLM-subset-telephone-12vs35.ipynb: Notebook where we try NLM on alt. 1,2 vs alt. 3,5. We removed alt. 4. We use a subset of telephone data.
+
+- NLM-subset-telephone-12vs345.ipynb: Notebook where we try NLM on alt. 1,2 vs alt. 3,4,5. We use a subset of telephone data.
+
+- NLM-subset-telephone-123vs45.ipynb: Notebook where we try NLM on alt. 1,2,3 vs alt. 4,5. We use a subset of telephone data.
+
+- NLM-telephone-complete-data.ipynb: Notebook where we try NLM on alt. 1,2 vs alt. 3,4,5.
+
+- NLM-SM.ipynb: Notebook where we adapt an R code for NLM on swissmetro data to Python. 
 
 
