@@ -48,9 +48,13 @@ This repository contains all the files used to test and generate the results and
 
     - plot_clusters: Plot the data points and color them based on the cluster they are associated with (q(t|x)).
 
-    - DIB_curve: Plot the DIB curve from a joint distribution p(x,y) and some values of beta. 
+    - DIB_curve: Plot the DIB curve from a joint distribution p(x,y) and some values of beta by using geom_DIB. 
 
     - compute_entropy_over_beta: Compute H(T) for different chosen values of beta from the joint distribution p(x,y). We can choose which algorithm we want to use in this function. 
+
+    - geom_DIB_on_alternatives: Compute q(t|x), q(t) and q(y|t) from a joint distribution p(x,y) by using the deterministic information bottleneck method (hard clustering) without fixing the number of iterations but by using a metric criterion for convergence. It also fixes the maximum number of clusters to the number of alternatives instead of the number of datapoints.
+
+    - DIB_curve_on_alternatives: Plot the DIB curve from a joint distribution p(x,y) and some values of beta by using geom_DIB_on_alternatives.
 
 - functions_NLM.py: File containing different functions to compute a NLM. Here is an exhaustive list: 
     - estimate_nested_logit: Estimate parameters for a nested logit model using maximum likelihood estimation.
