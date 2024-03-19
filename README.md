@@ -1,8 +1,16 @@
-# Description of the files 
+# Application of the information-theoretic clustering to the discrete choice
 
-- images (folder): contains the different images that I saved for my report.
+## Project description
+
+The goal of this project is to employ the information bottleneck framework in the context of discrete choice. Specifically, given a discrete choice model like the nested logit model or cross-nested logit model, our objective is to investigate whether it is feasible to reconstruct the nests of the model using the information bottleneck approach applied to the joint distribution p(x,y) derived from the discrete choice model. This tentative seeks to explore the potential of information bottleneck in explaining the underlying structure of discrete choice models, thereby offering insights into the decision-making processes inherent in such models. 
+
+## Description of the files 
+
+This repository contains all the files used to test and generate the results and plots in the project report. Here are an exhaustive list of the files that you find in the repository. 
 
 - data (folder): contains different datasets (telephone.dat, swissmetro.dat). 
+
+- images (folder): contains the different images that I saved for my report.
 
 - Telephone (folder): contains python code for different implementations of NLM and CLNM on telephone data. 
 
