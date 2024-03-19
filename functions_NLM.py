@@ -59,30 +59,3 @@ def estimate_nested_logit(data, beta_initial, beta_names, log_likelihood_functio
     print("BIC:", bic)
 
     return result, se, t_stat, p_value, aic, bic
-
-def find_clusters(array):
-    """
-    Finds clusters in a binary array based on where the 1 in each row.
-
-    Parameters:
-    - array (numpy.ndarray): The input binary array.
-
-    Returns:
-    - dict: A dictionary where the keys are the row indices and the values are the cluster numbers.
-
-    """
-    n = len(array)
-    clusters = {}
-    cluster_count = 0
-
-    for i in range(n):
-        row = array[i]
-        index = np.argmax(row)  # Find the index of the 1 in the row
-        if row[index] == 1:
-            if index not in clusters:
-                cluster_count += 1
-                clusters[index] = cluster_count
-            cluster = clusters[index]
-            clusters[i] = cluster  # Store the cluster for the row index
-
-    return clusters

@@ -47,7 +47,7 @@
 - functions_NLM.py: File containing different functions to compute a NLM. Here is an exhaustive list: 
     - estimate_nested_logit: Estimate parameters for a nested logit model using maximum likelihood estimation.
 
-    - find_clusters: Finds clusters in a binary array based on where the 1 in each row.
+- archive-telephone-likelihood.py: Backup file containing different likelihood functions for telephone dataset. 
 
 - test-general-IB.ipynb: Notebook where we made the tests for functions in functions.py. 
 
@@ -55,14 +55,12 @@
 
 - test-general-DIB.ipynb: Notebook where we made the tests for general DIB. 
 
-- NLM-subset-telephone-12vs35.ipynb: Notebook where we try NLM on alt. 1,2 vs alt. 3,5. We removed alt. 4. We use a subset of telephone data.
+- NLM-telephone-complete-data.ipynb: Notebook where we try NLM on alt. 1,2 vs alt. 3,4,5 for telephone dataset. 
 
-- NLM-subset-telephone-12vs345.ipynb: Notebook where we try NLM on alt. 1,2 vs alt. 3,4,5. We use a subset of telephone data.
-
-- NLM-subset-telephone-123vs45.ipynb: Notebook where we try NLM on alt. 1,2,3 vs alt. 4,5. We use a subset of telephone data.
-
-- NLM-telephone-complete-data.ipynb: Notebook where we try NLM on alt. 1,2 vs alt. 3,4,5.
+- CNLM-telephone-complete-data.ipynb: Notebook where we try CNLM on alt.1,2 vs alt. 3,4,5 for telephone dataset. 
 
 - NLM-SM.ipynb: Notebook where we adapt an R code for NLM on swissmetro data to Python. 
+
+- CNLM-SM.ipynb: Notebook where we adapt an R code for CNLM on swissmetro data to Python.
 
 
