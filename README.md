@@ -71,6 +71,8 @@ This repository contains all the files used to test and generate the results and
 
 - CNLM-telephone-complete-data.ipynb: Notebook where we try CNLM on alt.1,2 vs alt. 3,4,5 for telephone dataset. 
 
+- LM-telephone-complete-data.ipynb: Notebook where we try LM for telephone dataset. 
+
 - NLM-SM.ipynb: Notebook where we adapt an R code for NLM on swissmetro data to Python. 
 
 - CNLM-SM.ipynb: Notebook where we adapt an R code for CNLM on swissmetro data to Python.
