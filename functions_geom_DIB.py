@@ -345,6 +345,9 @@ def geom_DIB_on_alternatives(p_xy, max_iter=100, beta=0.5, threshold=1e-5):
     objective_new = H_T - beta * I_TY
     iteration = 0
 
+    if abs(objective_new - objective_old) <= threshold:
+        q_t_given_x = np.eye(num_clusters)[f_x]
+
     while (abs(objective_new - objective_old) > threshold and iteration < max_iter):
         
         iteration += 1

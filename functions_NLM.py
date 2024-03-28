@@ -59,3 +59,25 @@ def estimate_nested_logit(data, beta_initial, beta_names, log_likelihood_functio
     print("BIC:", bic)
 
     return result, se, t_stat, p_value, aic, bic
+
+def simulate_choice(row):
+    """
+    Function to simulate a choice based on cumulative probabilities.
+
+    Parameters:
+    - row: pandas Series or DataFrame row containing probabilities for each choice
+
+    Returns:
+    - The simulated choice (an integer between 1 and the number of choices)
+    """
+    # Generate a random number between 0 and 1
+    random_number = np.random.rand()
+    
+    # Calculate cumulative probabilities
+    probabilities = row[['P_1', 'P_2', 'P_3', 'P_4', 'P_5']]
+    cumulative_probs = probabilities.cumsum()
+    
+    # Determine simulated choice based on random number
+    for i, cumulative_prob in enumerate(cumulative_probs):
+        if random_number <= cumulative_prob:
+            return i+1

@@ -56,8 +56,11 @@ This repository contains all the files used to test and generate the results and
 
     - DIB_curve_on_alternatives: Plot the DIB curve from a joint distribution p(x,y) and some values of beta by using geom_DIB_on_alternatives.
 
-- functions_NLM.py: File containing different functions to compute a NLM. Here is an exhaustive list: 
+- functions_NLM.py: File containing different functions to compute a NLM. Here is an exhaustive list:
+
     - estimate_nested_logit: Estimate parameters for a nested logit model using maximum likelihood estimation.
+
+    - simulate_choice: Function to simulate a choice based on cumulative probabilities.
 
 - archive-telephone-likelihood.py: Backup file containing different likelihood functions for telephone dataset. 
 
