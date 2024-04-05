@@ -57,6 +57,7 @@ def estimate_nested_logit(data, beta_initial, beta_names, log_likelihood_functio
     print(results_df)
     print("AIC:", aic)
     print("BIC:", bic)
+    print("Log-likelihood:", -result.fun)
 
     return result, se, t_stat, p_value, aic, bic
 
