@@ -6,7 +6,7 @@ The goal of this project is to employ the information bottleneck framework in th
 
 ## Description of the files 
 
-### Week 1 to 6
+### Week 1 to 6
 
 This repository contains all the files used to test and generate the results and plots in the project report. Here are an exhaustive list of the files that you find in the repository. 
 
