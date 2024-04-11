@@ -82,3 +82,48 @@ def simulate_choice(row):
     for i, cumulative_prob in enumerate(cumulative_probs):
         if random_number <= cumulative_prob:
             return i+1
+        
+def multivariate_lognormal_pdf(x, mu, sigma):
+    """
+    Compute the probability density function (PDF) of a multivariate lognormal distribution.
+
+    Parameters:
+        x (ndarray): Vector in log space.
+        mu (ndarray): Mean vector.
+        sigma (ndarray): Covariance matrix.
+
+    Returns:
+        float: Value of the PDF at x.
+    """
+    n = len(x)
+    
+    # Compute the PDF of a multivariate normal distribution
+    exponent = -0.5 * (x - mu).T @ np.linalg.inv(sigma) @ (x - mu)
+    mvn_pdf = (1 / ((2 * np.pi) ** (n / 2) * np.sqrt(np.linalg.det(sigma)))) * np.exp(exponent)
+    
+    # Compute the Jacobian determinant term and remove x = 0 elements
+    jacobian = np.prod(1 / x)
+
+    pdf = jacobian * mvn_pdf
+
+    # Compute the PDF of the multivariate lognormal distribution
+    
+    return pdf
+
+def largest_cluster_size(q_t_given_x):
+    """
+    Calculate the size of the largest cluster in a given set of clusters.
+
+    Parameters:
+    - q_t_given_x (numpy.ndarray): A 2D array representing the clusters,
+                                where each row represents a data point and each column represents a cluster.
+
+    Returns:
+    - int: The size of the largest cluster.
+
+    """
+    # Calculate the size of each cluster
+    cluster_sizes = np.sum(q_t_given_x, axis=0)
+    # Find the size of the largest cluster
+    largest_cluster_size = np.max(cluster_sizes)
+    return largest_cluster_size

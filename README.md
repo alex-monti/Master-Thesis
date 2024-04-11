@@ -6,6 +6,8 @@ The goal of this project is to employ the information bottleneck framework in th
 
 ## Description of the files 
 
+### Week 1 to 6
+
 This repository contains all the files used to test and generate the results and plots in the project report. Here are an exhaustive list of the files that you find in the repository. 
 
 - data (folder): contains different datasets (telephone.dat, swissmetro.dat). 
@@ -62,6 +64,10 @@ This repository contains all the files used to test and generate the results and
 
     - simulate_choice: Function to simulate a choice based on cumulative probabilities.
 
+    - multivariate_lognormal_pdf: Compute the probability density function (PDF) of a multivariate lognormal distribution.
+
+    - largest_cluster_size(q_t_given_x): Calculate the size of the largest cluster in a given set of clusters.
+
 - archive-telephone-likelihood.py: Backup file containing different likelihood functions for telephone dataset. 
 
 - test-general-IB.ipynb: Notebook where we made the tests for functions in functions.py. 
@@ -79,5 +85,11 @@ This repository contains all the files used to test and generate the results and
 - NLM-SM.ipynb: Notebook where we adapt an R code for NLM on swissmetro data to Python. 
 
 - CNLM-SM.ipynb: Notebook where we adapt an R code for CNLM on swissmetro data to Python.
+
+### Week 7 & 8
+
+- From-diagonal-covariance.ipynb: Notebook where we try to understand the impact of modifying the covariance matrix of the distribution used for p(x) on the results of the DIB algorithm. 
+
+- week-8.ipynb: Notebook where we change our approach. KEY STEP. 
 
 
