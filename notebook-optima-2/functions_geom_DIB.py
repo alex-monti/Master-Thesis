@@ -375,7 +375,8 @@ def geom_DIB_on_alternatives(p_xy, max_iter=100, beta=0.5, threshold=1e-5):
         # print at which iteration we are and the value of the objective function
         print("Iteration:", iteration, "out of", max_iter)
         print("Objective function value:", objective_new)
-        
+        print("H(T) = ", H_T)
+        print("I(T;Y) = ", I_TY)
 
       ########################################################################################################
 
