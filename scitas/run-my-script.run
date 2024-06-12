@@ -1,0 +1,11 @@
+#!/bin/bash
+#SBATCH --job-name=my_python_job       # Job name
+#SBATCH --output=output.txt            # Output file
+#SBATCH --error=error.txt              # Error file
+#SBATCH --time=48:00:00                # Maximum runtime (hh:mm:ss)
+#SBATCH --cpus-per-task=64              # Number of CPU cores per task
+#SBATCH --mem=384000                      # Memory per node
+
+# Run Python script
+python test-restaurant.py
+
