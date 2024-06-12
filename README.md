@@ -1,20 +1,22 @@
 # Application of the information-theoretic clustering to the discrete choice
 
-## Project description
+## Thesis description
 
-The goal of this project is to employ the information bottleneck framework in the context of discrete choice. Specifically, given a discrete choice model like the nested logit model or cross-nested logit model, our objective is to investigate whether it is feasible to reconstruct the nests of the model using the information bottleneck approach applied to the joint distribution p(x,y) derived from the discrete choice model. This tentative seeks to explore the potential of information bottleneck in explaining the underlying structure of discrete choice models, thereby offering insights into the decision-making processes inherent in such models. 
+This thesis investigates the application of the Deterministic Information Bottleneck (DIB) algorithm to discrete choice models, aiming to establish a link between these two methodologies to enhance model selection and evaluation. Discrete choice models are essential for understanding decision-making processes, yet they often face challenges in model selection due to high-dimensional data and complex preference structures. The DIB algorithm, which optimizes the trade-off between relevance and compression of information, offers a promising approach to address these issues.
+
+In this study, we demonstrate that the DIB algorithm can identify the best-fitting discrete choice model by maximizing log-likelihood and minimizing the Akaike Information Criterion (AIC). By integrating DIB with discrete choice theory, we develop a novel framework for model selection that leverages information-theoretic principles to improve predictive performance and interpretability.
+
+To validate our approach, we apply the proposed method to different datasets. The empirical results show that models selected using the DIB algorithm consistently outperform other possible models in terms of log-likelihood and AIC. These findings support our conjecture that DIB can serve as a powerful tool for model selection in discrete choice analysis, providing more accurate and reliable insights into consumer behavior.
+
+Overall, this research contributes to the field of discrete choice modelling by introducing an information- theoretic perspective, which enhances both the theoretical understanding and practical application of these models.
 
 ## Description of the files 
 
-This repository contains all the files used to test and generate the results and plots in the project report. Here are an exhaustive list of the files that you find in the repository. 
+This repository contains all the files used to test and generate the results and plots in the thesis report. Here are an exhaustive list of the files that you find in the repository. 
 
-- data (folder): contains different datasets (telephone.dat, swissmetro.dat). 
+- data (folder): contains different datasets. 
 
-- images (folder): contains the different images that I saved for my report.
-
-- Telephone (folder): contains python code for different implementations of NLM and CLNM on telephone data. 
-
-- master-project-report.pdf: report about what I learned and what is good to know about information bottleneck. 
+- FINAL-REPORT.pdf: final report. 
 
 - py-files (folder): contains all the .py files used in the different notebooks. Here is an exhaustive list of the files : 
 
@@ -70,40 +72,16 @@ This repository contains all the files used to test and generate the results and
 
     - archive-telephone-likelihood.py: Backup file containing different likelihood functions for telephone dataset. 
 
-- first-tests (folder): contains all the notebooks used to test IB framework at the very beginning of the project. Here is an exhaustive list: 
+- first-tests (folder): contains all the notebooks used to test IB framework at the very beginning of the project.
 
-    - test-general-IB.ipynb: Notebook where we made the tests for functions in functions.py. 
+- notebook-airline (folder): contains all the notebooks used to test IB framework on the Airline dataset.
 
-    - test-geom-DIB.ipynb: Notebook where we made the tests for functions in functions_geom_DIB.py. 
+- notebook-optima (folder): contains all the notebooks used to test IB framework on the Optima dataset.
 
-    - test-general-DIB.ipynb: Notebook where we made the tests for general DIB. 
+- notebook-optima-2 (folder): contains all the notebooks used to test IB framework on the Optima dataset with a different base model.
 
-- notebook-telephone (folder): contains all the notebooks used to test IB framework on the telephone dataset. Here is an exhaustive list: 
+- notebook-telephone (folder): contains all the notebooks used to test IB framework on the telephone dataset.
 
-    - NLM-telephone-complete-data.ipynb: Notebook where we try NLM on alt. 1,2 vs alt. 3,4,5 for telephone dataset. 
-
-    - CNLM-telephone-complete-data.ipynb: Notebook where we try CNLM on alt.1,2 vs alt. 3,4,5 for telephone dataset. 
-
-    - LM-telephone-complete-data.ipynb: Notebook where we try LM for telephone dataset. 
-
-    - LM-telephone-fixed_data.ipynb: Notebook where we try to adjust the cost parameter in the logit model. 
-    
-    - From-diagonal-covariance.ipynb: Notebook where we try to understand the impact of modifying the covariance matrix of the distribution used for p(x) on the results of the DIB algorithm. 
-
-    - week-8.ipynb: Notebook where we change our approach. KEY STEP. 
-
-    - week-9-LM-telephone.ipynb: Notebook where we try LM for telephone dataset. 
-
-    - week-9-NLM-telephone.ipynb: Notebook where we try NLM for telephone dataset. 
-
-- notebook-SM (folder): contains all the notebooks used to test IB framework on the SM dataset. Here is an exhaustive list: 
-
-    - NLM-SM.ipynb: Notebook where we adapt an R code for NLM on swissmetro data to Python. 
-
-    - CNLM-SM.ipynb: Notebook where we adapt an R code for CNLM on swissmetro data to Python.
-
-    - week-9-LM-SM.ipynb: Notebook where we try LM for SM dataset. 
-
-    - week-9-NLM-SM.ipynb: Notebook where we try NLM for SM dataset. 
+- notebook-SM (folder): contains all the notebooks used to test IB framework on the SM dataset. 
 
 
