@@ -16,8 +16,6 @@ This repository contains all the files used to test and generate the results and
 
 - data (folder): contains different datasets. 
 
-- FINAL-REPORT.pdf: final report. 
-
 - py-files (folder): contains all the .py files used in the different notebooks. Here is an exhaustive list of the files : 
 
     - functions_general_IB.py: File containing different general functions and specific functions for the IB algorithm. Here is an exhaustive list: 
@@ -83,5 +81,3 @@ This repository contains all the files used to test and generate the results and
 - notebook-telephone (folder): contains all the notebooks used to test IB framework on the telephone dataset.
 
 - notebook-SM (folder): contains all the notebooks used to test IB framework on the SM dataset. 
-
-
